@@ -9,8 +9,8 @@
     homeDirectory = "/home/felipe350";
     file = {
       ".local/share/backgrounds" = {
-        source = ./wallpapers; # A directory containing your wallpapers
-        recursive = true; # Include all files in the directory
+        source = ./wallpapers;
+        recursive = true;
       };
     };
 

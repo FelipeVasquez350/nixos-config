@@ -10,6 +10,6 @@
     obsidian
     vorta
     zoom-us
-    syncthingtray  # Add this
+    #syncthingtray
   ];
 }
