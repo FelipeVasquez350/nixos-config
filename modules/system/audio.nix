@@ -1,5 +1,4 @@
 { config, pkgs, ... }: {
-  # Audio configuration
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

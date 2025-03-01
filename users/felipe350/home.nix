@@ -17,7 +17,6 @@
     stateVersion = "24.11";
   };
 
-  # Make sure this is enabled
   programs.home-manager.enable = true;
 
   dconf.settings = {
