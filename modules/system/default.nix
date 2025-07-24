@@ -1,10 +1,5 @@
 { config, pkgs, ... }: {
-  imports = [
-    ./desktop.nix
-    ./audio.nix
-    ./virtualisation.nix
-    ./power.nix
-  ];
+  imports = [ ./desktop.nix ./audio.nix ./virtualisation.nix ./power.nix ];
 
   # System-wide settings
   time.timeZone = "Europe/Rome";
@@ -25,11 +20,12 @@
   };
 
   # Enable nix flakes
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # System state version
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.11";
+
 }

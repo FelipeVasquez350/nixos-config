@@ -14,11 +14,12 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices."luks-79a38375-cef1-4667-b999-789430d3f8c6".device = "/dev/disk/by-uuid/79a38375-cef1-4667-b999-789430d3f8c6";
+  boot.initrd.luks.devices."luks-79a38375-cef1-4667-b999-789430d3f8c6".device =
+    "/dev/disk/by-uuid/79a38375-cef1-4667-b999-789430d3f8c6";
   networking = {
     hostName = "framework-13";
     networkmanager.enable = true;
   };
 
-  services.fwupd.enable = true;  # For Framework firmware updates
+  services.fwupd.enable = true; # For Framework firmware updates
 }

@@ -11,8 +11,10 @@
     gnome-tweaks
     htop
     nmap
+    sops
     stow
     wget
     zoxide
+
   ];
 }

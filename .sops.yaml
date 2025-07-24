@@ -1,0 +1,7 @@
+keys:
+  - &felipe350 age16mj2eevjh3mglx0z8vxfwvkxava2cvgyfrwakde6ckuvw0aptfdsgxx02c
+creation_rules:
+  - path_regex: users/.*/secrets\.yaml$
+    key_groups:
+      - age:
+          - *felipe350

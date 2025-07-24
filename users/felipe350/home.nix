@@ -1,8 +1,5 @@
-{ lib, pkgs, config, ...}: {
-  imports = [
-    ./programs/default.nix
-    ./services
-  ];
+{ config, ... }: {
+  imports = [ ./programs/default.nix ];
 
   home = {
     username = "felipe350";
@@ -14,24 +11,30 @@
       };
     };
 
-    stateVersion = "24.11";
+    sessionVariables = {
+      EDITOR = "vim"; # Change to your preferred editor
+      VISUAL = "vim"; # Some programs check VISUAL before EDITOR
+      SOPS_AGE_KEY_FILE = "/var/lib/sops-nix/keys.txt";
+    };
+
+    stateVersion = "25.11";
   };
 
   programs.home-manager.enable = true;
 
   dconf.settings = {
-    "org/gnome/desktop/interface" = {
-      color-scheme = "prefer-dark";
-    };
+    "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
     "org/gnome/desktop/background" = {
-      picture-uri = "file://${config.home.homeDirectory}/.local/share/backgrounds/wallpaper.png";
-      picture-uri-dark = "file://${config.home.homeDirectory}/.local/share/backgrounds/wallpaper.png";
+      picture-uri =
+        "file://${config.home.homeDirectory}/.local/share/backgrounds/wallpaper.png";
+      picture-uri-dark =
+        "file://${config.home.homeDirectory}/.local/share/backgrounds/wallpaper.png";
       picture-options = "zoom";
     };
     "org/gnome/shell" = {
       favorite-apps = [
         "dev.zed.Zed.desktop"
-        "zen.desktop"
+        "zen-beta.desktop"
         "com.mitchellh.ghostty.desktop"
         "code.desktop"
         "org.gnome.Nautilus.desktop"
