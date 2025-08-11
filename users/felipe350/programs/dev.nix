@@ -7,6 +7,7 @@
     cloudflared
     dbeaver-bin
     dig
+    direnv
     # flux
     fnm
     gcc
@@ -30,11 +31,12 @@
     spice-gtk
     tmux
     OVMF # for UEFI support
+    unetbootin # for creating bootable USB drives
     virtiofsd # for shared folders
     virt-manager
     virt-viewer
     vscode
-    zed-editor
+    zed-editor-fhs
     jq
   ];
 }

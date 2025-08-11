@@ -17,7 +17,7 @@
       SOPS_AGE_KEY_FILE = "/var/lib/sops-nix/keys.txt";
     };
 
-    stateVersion = "25.11";
+    stateVersion = "25.05";
   };
 
   programs.home-manager.enable = true;

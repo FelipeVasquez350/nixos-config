@@ -4,6 +4,6 @@
       enable = true;
       acceleration = false;
     };
-    open-webui.enable = true;
+    # open-webui.enable = true;
   };
 }

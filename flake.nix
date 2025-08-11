@@ -52,16 +52,20 @@
 
           shellHook = ''
             export NIX_LD_LIBRARY_PATH=${
-              pkgs.lib.makeLibraryPath [ pkgs.stdenv.cc.cc pkgs.openssl ]
+              pkgs.lib.makeLibraryPath [
+                pkgs.stdenv.cc.cc
+                pkgs.openssl
+                pkgs.openssl_3
+              ]
             }
             export NIX_LD=${
               pkgs.lib.fileContents
               "${pkgs.stdenv.cc}/nix-support/dynamic-linker"
             }
-            
+
             # Initialize fnm
             eval "$(fnm env --use-on-cd)"
-            
+
             # Ensure fnm-managed Node.js takes precedence in PATH
             export PATH="$HOME/.fnm/current/bin:$PATH"
           '';
