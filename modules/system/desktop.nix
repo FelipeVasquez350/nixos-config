@@ -1,8 +1,9 @@
-{ config, pkgs, ... }: {
+{ pkgs, ... }: {
   # XDG portal configuration
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
+      xdg-desktop-portal
       xdg-desktop-portal-gnome
       xdg-desktop-portal-gtk
     ];
@@ -11,10 +12,11 @@
 
   # GNOME Desktop configuration
   services = {
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+
     xserver = {
       enable = true;
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
 
       # Keyboard layout
       xkb = {

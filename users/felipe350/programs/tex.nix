@@ -1,13 +1,7 @@
-{ # config,
-pkgs, ... }:
+{ pkgs, ... }:
 let
   tex = (pkgs.texlive.combine {
     inherit (pkgs.texlive)
-      scheme-full dvisvgm dvipng # for preview and export as html
-      wrapfig amsmath ulem hyperref capt-of;
-    #(setq org-latex-compiler "lualatex")
-    #(setq org-preview-latex-default-process 'dvisvgm)
+      scheme-full dvisvgm dvipng wrapfig amsmath ulem hyperref capt-of;
   });
-in { # home-manager
-  home.packages = with pkgs; [ tex texstudio ];
-}
+in { home.packages = with pkgs; [ tex texstudio ]; }

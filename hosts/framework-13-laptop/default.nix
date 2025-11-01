@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ inputs, ... }:
 
 {
   imports = [
@@ -18,8 +18,13 @@
     "/dev/disk/by-uuid/79a38375-cef1-4667-b999-789430d3f8c6";
   networking = {
     hostName = "framework-13";
-    networkmanager.enable = true;
+    nameservers = [ "1.1.1.1" "1.1.0.1" ];
+    networkmanager = {
+      enable = true;
+      dns = "systemd-resolved";
+    };
   };
+  services.resolved.enable = true;
 
   services.fwupd.enable = true; # For Framework firmware updates
 }

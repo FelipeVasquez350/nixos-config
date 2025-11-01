@@ -1,13 +1,19 @@
 { pkgs, ... }: {
   imports = [ ./services/default.nix ];
 
+  environment.systemPackages = [ (pkgs.callPackage ./packages/dops.nix { }) ];
+
   programs.zsh.enable = true;
   programs.nix-ld.enable = true;
+  programs.wireshark = {
+    enable = true;
+    dumpcap = { enable = true; };
+  };
 
   users.users.felipe350 = {
     isNormalUser = true;
     description = "felipe350";
-    extraGroups = [ "networkmanager" "wheel" "docker" "vboxusers" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "wireshark" ];
 
     shell = pkgs.zsh;
 
@@ -25,8 +31,7 @@
     settings = {
       auto-optimise-store = true;
       trusted-users = [ "felipe350" "@wheel" ];
-      # Keep the store small
-      min-free = 64000000; # 64MB minimum free
+      min-free = 64000000;
     };
 
     gc = {
@@ -37,6 +42,4 @@
   };
 
   fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
-
-  environment.variables = { PATH = [ "/usr/bin" "$PATH" ]; };
 }

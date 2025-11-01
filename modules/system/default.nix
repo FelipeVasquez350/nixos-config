@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ ... }: {
   imports = [ ./desktop.nix ./audio.nix ./virtualisation.nix ./power.nix ];
 
   # System-wide settings

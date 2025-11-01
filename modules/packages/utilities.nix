@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
   environment.systemPackages = with pkgs; [
@@ -7,7 +7,7 @@
     fastfetch
     fzf
     git
-    gnome-resources
+    resources
     gnome-tweaks
     htop
     nmap
@@ -15,6 +15,5 @@
     stow
     wget
     zoxide
-
   ];
 }

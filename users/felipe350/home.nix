@@ -36,7 +36,6 @@
         "dev.zed.Zed.desktop"
         "zen-beta.desktop"
         "com.mitchellh.ghostty.desktop"
-        "code.desktop"
         "org.gnome.Nautilus.desktop"
         "bitwarden.desktop"
         "discord.desktop"

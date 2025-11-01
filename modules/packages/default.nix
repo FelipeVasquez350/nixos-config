@@ -1,14 +1,7 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, ... }:
 
 {
-  imports = [
-    ./dependencies.nix
-    ./flakes.nix
-    ./utilities.nix
-  ];
+  imports = [ ./flakes.nix ./utilities.nix ];
 
-  environment.systemPackages = with pkgs; [
-    ghostty
-    vim
-  ];
+  environment.systemPackages = with pkgs; [ ghostty vim ];
 }

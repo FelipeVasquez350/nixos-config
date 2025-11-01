@@ -1,5 +1,4 @@
-{ # config
-pkgs, ... }: {
+{ pkgs, ... }: {
   imports = [
     ./dev.nix
     ./media.nix
@@ -11,8 +10,11 @@ pkgs, ... }: {
     brave
     discord
     obsidian
+    telegram-desktop
+    mattermost-desktop
     vorta
-    zoom-us
     protonvpn-gui
+    wl-clipboard
+    nushell
   ];
 }
