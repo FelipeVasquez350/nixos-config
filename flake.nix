@@ -13,34 +13,42 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+    vicinae.url = "github:vicinaehq/vicinae";
+    openziti.url =
+      "git+ssh://gitlab@gitlab.uranion.ai:2222/devops/nix-flakes/openziti.git?ref=main";
   };
 
-  outputs = inputs@{ nixpkgs, sops-nix, home-manager, ... }:
-    let
-      system = "x86_64-linux";
-      username = "felipe350";
+  outputs = inputs@{ nixpkgs, sops-nix, home-manager, vicinae, openziti
+    , plasma-manager, ... }:
+    let system = "x86_64-linux";
     in {
       nixosConfigurations = {
-        laptop = nixpkgs.lib.nixosSystem {
+
+        desktop = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs username system; };
+          specialArgs = { inherit inputs; };
 
           modules = [
-            ./hosts/framework-13-laptop
-            ./modules/system
-            ./modules/services
-            ./modules/packages
-            ./users/${username}/nixos.nix
+            ./hosts/desktop
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = { inherit inputs username; };
-                users.${username} = import ./users/${username}/home.nix;
-              };
-            }
+          ];
+        };
+
+        laptop = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs system; };
+          modules = [
+            # ./packages/dops.nix
+            ./hosts/framework-13-laptop
+            sops-nix.nixosModules.sops
+            home-manager.nixosModules.home-manager
+            openziti.nixosModules.ziti-edge-tunnel
           ];
         };
       };
