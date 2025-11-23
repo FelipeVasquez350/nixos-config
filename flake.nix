@@ -23,8 +23,7 @@
       "git+ssh://gitlab@gitlab.uranion.ai:2222/devops/nix-flakes/openziti.git?ref=main";
   };
 
-  outputs = inputs@{ nixpkgs, sops-nix, home-manager, vicinae, openziti
-    , plasma-manager, ... }:
+  outputs = inputs@{ nixpkgs, sops-nix, home-manager, openziti, ... }:
     let system = "x86_64-linux";
     in {
       nixosConfigurations = {
