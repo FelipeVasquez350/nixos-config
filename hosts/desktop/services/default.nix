@@ -1,6 +1,9 @@
 { ... }: {
+  imports = [ ./cloudflared.nix ];
 
   services = {
+    flatpak.enable = true;
+
     openssh = {
       enable = true;
       ports = [ 22 ];
@@ -22,5 +25,7 @@
       overrideFolders = true;
       openDefaultPorts = true;
     };
+
+    ziti-edge-tunnel = { enable = true; };
   };
 }

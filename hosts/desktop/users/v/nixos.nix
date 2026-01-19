@@ -30,6 +30,10 @@
     };
   };
 
+  programs.nix-ld.enable = true;
+
+  programs.nix-ld.libraries = with pkgs; [ icu ];
+
   fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
 
   programs.gamemode.enable = true;
@@ -39,11 +43,13 @@
     # Programs
     bitwarden-desktop
     discord
+    discord-canary
     obsidian
     telegram-desktop
     mattermost-desktop
     vorta
     protonvpn-gui
+    flatpak
 
     # Utilities
     bat
@@ -96,6 +102,7 @@
     # Gaming
     steam
     steamcmd
+    heroic
     gamescope
     mangohud
 

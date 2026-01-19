@@ -30,12 +30,13 @@
 
         desktop = nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs system; };
 
           modules = [
             ./hosts/desktop
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
+            openziti.nixosModules.ziti-edge-tunnel
           ];
         };
 
@@ -43,7 +44,6 @@
           inherit system;
           specialArgs = { inherit inputs system; };
           modules = [
-            # ./packages/dops.nix
             ./hosts/framework-13-laptop
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager

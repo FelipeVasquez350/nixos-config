@@ -1,7 +1,7 @@
 { ... }: {
   # Mount for additional drives
   fileSystems = {
-    # NVMe drive 1 (WD_BLACK SN770 2TB) - /dev/nvme0n1p1
+    # NVMe drive 1 (CT1000P3SSD8 931GB) - /dev/nvme0n1p1
     "/run/media/v/secondary" = {
       device = "/dev/disk/by-label/secondary";
       fsType = "ext4";
