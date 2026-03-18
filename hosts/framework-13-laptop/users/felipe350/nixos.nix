@@ -1,12 +1,19 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, ... }:
+{
   programs.zsh.enable = true;
 
   users.users.felipe350 = {
     isNormalUser = true;
     description = "felipe350";
-    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "wireshark" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+      "libvirtd"
+      "wireshark"
+    ];
 
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
 
     openssh.authorizedKeys.keys = [
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDAqgfcNv5MLfj2+2f7UGB7yu4d7NwPNxxNdINwOATFGzW+w15yOimWneGbUKaAX+YV9fyebpX7CinsvEbHIyQVMw32e6CEW9lDtFtlTQLIYbKYglIDgaris1hZxkvYKUG3FgFYxDqG5yKVB9G3/uPBl8CAMAmYBPu2d+YGqmVw/NT31kWqfbBFyIsQq/PdxP1S0kx9ng1GfCVsfqTGJ9SNZIp2jTFHnIckp7hajJSDzucNVygfHApkQrA4jJ9RSzDZ/XWtlK3XFf0WE5qqsW6qhkJ47BI438vhYXz8y8b9X7qqGwoMIzY3Z+uS6/kVgvUXiHlslB8Xt1WzW2mFi7yH29gzThwqm5A/Noo6W7K++FBaMWZBkSO7naw02b/SRtyjeiiwkvsNv4+Iwyiwr/DCinz6IgngRvLEkOJcMCQ0Mert/VH8VK8AANqKrSmREQM8164gQHFyavOz7c2GGDOyWbIv9lWXjvjN5jxlFw8IErWMnqv/TqIo998yykeEGTE="
@@ -21,7 +28,10 @@
   nix = {
     settings = {
       auto-optimise-store = true;
-      trusted-users = [ "felipe350" "@wheel" ];
+      trusted-users = [
+        "felipe350"
+        "@wheel"
+      ];
       min-free = 64000000;
     };
 
@@ -34,6 +44,11 @@
 
   fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
 
+  programs.dconf.enable = true;
+  programs.extra-container.enable = true;
+
+  programs.nix-ld.enable = true; # needed to compile some packages like zed extensions
+
   environment.systemPackages = with pkgs; [
     # Programs
     bitwarden-desktop
@@ -43,6 +58,8 @@
     mattermost-desktop
     vorta
     protonvpn-gui
+    claude-code
+    claude-code-acp
 
     # Utilities
     bat
@@ -52,13 +69,14 @@
     fzf
     ghostty
     gnome-disk-utility
+    gnomeExtensions.caffeine
     resources
     gnome-tweaks
     htop
     nmap
     nh
     nixd
-    nixfmt-classic
+    nixfmt
     nixos-anywhere
     nushell
     sops
@@ -71,6 +89,9 @@
     zoxide
 
     # Development
+    rustup # for zed extensions
+    # clang
+
     dig
     direnv
     fd
@@ -80,6 +101,7 @@
     git
     glab
     gnumake
+    gsettings-desktop-schemas
     jetbrains.datagrip
     jq
     neovim
@@ -87,24 +109,27 @@
     spice-gtk
     tmux
     OVMF # for UEFI support
-    unetbootin # for creating bootable USB drives
+    pika-backup
+    mediawriter # for creating bootable USB drives
     virtiofsd # for shared folders
     virt-manager
     virt-viewer
     wireshark
-    vscode
-    zed-editor
+
+    pkgs.zed-editor
+    package-version-server
 
     # Media
     aseprite
     blender
     feishin
-    # kid3
-    # reco
+    kid3
     spotify
     vlc
     obs-studio
     libreoffice
+
+    steam
 
     # Flakes
     inputs.zen-browser.packages.${pkgs.system}.default

@@ -11,7 +11,7 @@
         runAsRoot = true;
         swtpm.enable = true;
       };
-      allowedBridges = [ "virbr0" "br0" ];
+      allowedBridges = [ "virbr0" ];
 
       # Enable NSS for libvirt VM hostname resolution
       onBoot = "ignore";

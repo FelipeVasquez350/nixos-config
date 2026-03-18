@@ -1,5 +1,5 @@
 { ... }: {
-  imports = [ ./desktop.nix ./audio.nix ./power.nix ./virtualization.nix ];
+  imports = [ ./desktop.nix ./audio.nix ./power.nix ./virtualization.nix ./network.nix];
 
   # System-wide settings
   time.timeZone = "Europe/Rome";

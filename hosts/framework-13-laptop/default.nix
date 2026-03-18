@@ -20,11 +20,10 @@
   boot.initrd.luks.devices."luks-79a38375-cef1-4667-b999-789430d3f8c6".device =
     "/dev/disk/by-uuid/79a38375-cef1-4667-b999-789430d3f8c6";
 
-
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    extraSpecialArgs = { inherit inputs ; };
+    extraSpecialArgs = { inherit inputs; };
     users.felipe350 = import ./users/felipe350/home.nix;
   };
 
