@@ -1,5 +1,12 @@
-{ ... }: {
-  imports = [ ./desktop.nix ./audio.nix ./power.nix ./virtualization.nix ./network.nix];
+{ ... }:
+{
+  imports = [
+    ./desktop.nix
+    ./audio.nix
+    ./power.nix
+    ./virtualization.nix
+    ./network.nix
+  ];
 
   # System-wide settings
   time.timeZone = "Europe/Rome";
@@ -20,12 +27,16 @@
   };
 
   # Enable nix flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Vicinae Cachix cache
   nix.settings.extra-substituters = [ "https://vicinae.cachix.org" ];
-  nix.settings.extra-trusted-public-keys =
-    [ "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc=" ];
+  nix.settings.extra-trusted-public-keys = [
+    "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
+  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

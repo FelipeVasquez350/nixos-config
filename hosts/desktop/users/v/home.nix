@@ -1,4 +1,5 @@
-{ config, inputs, ... }: {
+{ config, inputs, ... }:
+{
   imports = [ inputs.plasma-manager.homeModules.plasma-manager ];
 
   home = {
@@ -23,8 +24,7 @@
   programs.plasma = {
     enable = true;
     workspace = {
-      wallpaper =
-        "${config.home.homeDirectory}/.local/share/backgrounds/wallpaper.png";
+      wallpaper = "${config.home.homeDirectory}/.local/share/backgrounds/wallpaper.png";
     };
     # https://github.com/nix-community/plasma-manager/pull/308/files#diff-9ad67fb09adfdee1b6e1435ea3bb616e446522d086db5c1f84ead8bf911a62bf
     configFile.kwinrc.Effect-overview.BorderActivate = 3;

@@ -1,5 +1,8 @@
-{ config, # lib,
-pkgs, ... }:
+{
+  config, # lib,
+  pkgs,
+  ...
+}:
 
 {
   users.groups.cloudflared = { };

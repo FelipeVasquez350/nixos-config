@@ -29,7 +29,10 @@
 
   networking = {
     hostName = "framework-13";
-    nameservers = [ "1.1.1.1" "1.1.0.1" ];
+    nameservers = [
+      "1.1.1.1"
+      "1.1.0.1"
+    ];
     networkmanager = {
       enable = true;
       dns = "systemd-resolved";

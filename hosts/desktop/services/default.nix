@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   imports = [ ./cloudflared.nix ];
 
   services = {
@@ -26,6 +27,8 @@
       openDefaultPorts = true;
     };
 
-    ziti-edge-tunnel = { enable = true; };
+    ziti-edge-tunnel = {
+      enable = true;
+    };
   };
 }

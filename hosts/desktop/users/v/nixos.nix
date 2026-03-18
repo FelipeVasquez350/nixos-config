@@ -1,8 +1,15 @@
-{ inputs, pkgs, ... }: {
+{ inputs, pkgs, ... }:
+{
   users.users.v = {
     isNormalUser = true;
     description = "v";
-    extraGroups = [ "networkmanager" "wheel" "docker" "libvirtd" "wireshark" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
+      "libvirtd"
+      "wireshark"
+    ];
 
     shell = pkgs.nushell;
 
@@ -19,7 +26,10 @@
   nix = {
     settings = {
       auto-optimise-store = true;
-      trusted-users = [ "v" "@wheel" ];
+      trusted-users = [
+        "v"
+        "@wheel"
+      ];
       min-free = 64000000;
     };
 
@@ -117,6 +127,6 @@
     obs-studio
 
     # Flakes
-    inputs.zen-browser.packages.${pkgs.system}.default
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

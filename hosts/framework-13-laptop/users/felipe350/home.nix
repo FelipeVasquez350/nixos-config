@@ -1,4 +1,10 @@
-{ inputs, config, pkgs, ... }: {
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
+{
 
   imports = [ inputs.vicinae.homeManagerModules.default ];
 
@@ -42,7 +48,6 @@
   };
   services.vicinae = {
     enable = true;
-    autoStart = true;
     settings = {
       faviconService = "twenty"; # twenty | google | none
       font.size = 14;
@@ -61,12 +66,12 @@
   home.packages = with pkgs; [ nix-direnv ];
 
   dconf.settings = {
-    "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; };
+    "org/gnome/desktop/interface" = {
+      color-scheme = "prefer-dark";
+    };
     "org/gnome/desktop/background" = {
-      picture-uri =
-        "file://${config.home.homeDirectory}/.local/share/backgrounds/wallpaper.png";
-      picture-uri-dark =
-        "file://${config.home.homeDirectory}/.local/share/backgrounds/wallpaper.png";
+      picture-uri = "file://${config.home.homeDirectory}/.local/share/backgrounds/wallpaper.png";
+      picture-uri-dark = "file://${config.home.homeDirectory}/.local/share/backgrounds/wallpaper.png";
       picture-options = "zoom";
     };
     "org/gnome/shell" = {

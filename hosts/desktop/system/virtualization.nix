@@ -1,9 +1,12 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
 
   environment.systemPackages = with pkgs; [ libxslt ];
 
   virtualisation = {
-    docker = { enable = true; };
+    docker = {
+      enable = true;
+    };
     libvirtd = {
       enable = true;
       qemu = {
@@ -11,7 +14,10 @@
         runAsRoot = true;
         swtpm.enable = true;
       };
-      allowedBridges = [ "virbr0" "br0" ];
+      allowedBridges = [
+        "virbr0"
+        "br0"
+      ];
 
       # Enable NSS for libvirt VM hostname resolution
       onBoot = "ignore";
@@ -20,5 +26,9 @@
   };
 
   # Enable NSS for libvirt hostname resolution
-  system.nssDatabases.hosts = [ "files" "libvirt" "dns" ];
+  system.nssDatabases.hosts = [
+    "files"
+    "libvirt"
+    "dns"
+  ];
 }

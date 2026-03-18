@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 {
 
   imports = [ ./cloudflared.nix ];
@@ -28,14 +28,8 @@
       openDefaultPorts = true;
     };
 
-    # ollama = {
-    #   enable = true;
-    #   package = pkgs.ollama-rocm;
-    # };
-
     ziti-edge-tunnel = {
       enable = true;
     };
-    # open-webui.enable = true;
   };
 }

@@ -1,5 +1,11 @@
-{ ... }: {
-  imports = [ ./desktop.nix ./audio.nix ./drives.nix ./virtualization.nix ];
+{ ... }:
+{
+  imports = [
+    ./desktop.nix
+    ./audio.nix
+    ./drives.nix
+    ./virtualization.nix
+  ];
 
   # System-wide settings
   time.timeZone = "Europe/Rome";
@@ -20,7 +26,10 @@
   };
 
   # Enable nix flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
