@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports = [
@@ -11,6 +11,8 @@
     ./users/v/nixos.nix
     ./hardware-configuration.nix
   ];
+
+  environment.systemPackages = [ (pkgs.callPackage ./packages/julie.nix { }) ];
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
@@ -28,9 +30,13 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.edk2-uefi-shell.enable = true;
   boot.loader.systemd-boot.windows = {
-    "11" = {
-      title = "Windows 11";
+    "OLD_11" = {
+      title = "Modding Windows 11";
       efiDeviceHandle = "HD1c65535a1";
+    };
+    "NEW_11" = {
+      title = "New Windows 11";
+      efiDeviceHandle = "HD0b";
     };
   };
   boot.loader.efi.canTouchEfiVariables = true;

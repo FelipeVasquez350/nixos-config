@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [ ./cloudflared.nix ];
 
@@ -25,6 +25,11 @@
       overrideDevices = true;
       overrideFolders = true;
       openDefaultPorts = true;
+    };
+
+    ollama = {
+      enable = true;
+      package = pkgs.ollama-vulkan;
     };
 
     ziti-edge-tunnel = {

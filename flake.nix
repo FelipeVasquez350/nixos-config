@@ -59,9 +59,7 @@
       };
 
       devShells.${system}.default = pkgs.mkShell {
-        nativeBuildInputs = with pkgs; [
-          nh
-        ];
+        nativeBuildInputs = with pkgs; [ nh ];
         shellHook = ''
           ${self.checks.${system}.pre-commit-check.shellHook}
         '';

@@ -3,14 +3,11 @@
   # Mount for additional drives
   fileSystems = {
     # NVMe drive 1 (CT1000P3SSD8 931GB) - /dev/nvme0n1p1
-    "/run/media/v/secondary" = {
-      device = "/dev/disk/by-label/secondary";
-      fsType = "ext4";
-      options = [
-        "defaults"
-        "nofail"
-      ];
-    };
+    # "/run/media/v/secondary" = {
+    #   device = "/dev/disk/by-label/secondary";
+    #   fsType = "ext4";
+    #   options = [ "defaults" "nofail" ];
+    # };
 
     # SATA drive 1 (ST1000DM010 931GB - /dev/sda)
     "/run/media/v/LinuxVolume" = {
