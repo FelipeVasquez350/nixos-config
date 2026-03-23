@@ -60,6 +60,7 @@
     protonvpn-gui
     claude-code
     claude-code-acp
+    copilot-language-server
 
     # Utilities
     bat

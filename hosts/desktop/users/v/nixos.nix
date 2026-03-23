@@ -65,6 +65,9 @@
     kdePackages.kcalc
     llama-cpp-vulkan
     vscode
+    claude-code
+    claude-code-acp
+    copilot-language-server
 
     # Utilities
     bat

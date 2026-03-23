@@ -29,7 +29,6 @@
     openziti.url = "git+ssh://gitlab@gitlab.uranion.ai:2222/devops/nix-flakes/openziti.git?ref=main";
 
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
-
   };
 
   outputs =
@@ -66,7 +65,6 @@
       };
 
       nixosConfigurations = {
-
         desktop = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs system; };
           modules = [
