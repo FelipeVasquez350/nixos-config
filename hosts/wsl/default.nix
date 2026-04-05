@@ -6,13 +6,24 @@
 }:
 
 {
+  imports = [
+    ./virtualization.nix
+  ];
+
   system.stateVersion = "25.11";
   wsl.enable = true;
 
   programs.zsh.enable = true;
   programs.starship.enable = true;
 
-  users.users.nixos.shell = pkgs.zsh;
+  users.users.nixos = {
+    shell = pkgs.zsh;
+    extraGroups = [
+      "wheel"
+      "docker"
+      "libvirtd"
+    ];
+  };
 
   nix = {
     settings = {
