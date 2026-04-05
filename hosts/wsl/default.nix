@@ -9,10 +9,10 @@
   system.stateVersion = "25.11";
   wsl.enable = true;
 
-  programs.fish.enable = true;
+  programs.zsh.enable = true;
   programs.starship.enable = true;
 
-  users.users.nixos.shell = pkgs.fish;
+  users.users.nixos.shell = pkgs.zsh;
 
   nix = {
     settings = {
