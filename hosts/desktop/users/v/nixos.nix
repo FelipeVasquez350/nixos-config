@@ -83,7 +83,7 @@
     nmap
     nh
     nixd
-    nixfmt-classic
+    nixfmt
     nixos-anywhere
     nushell
     sops

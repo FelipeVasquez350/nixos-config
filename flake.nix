@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     home-manager = {
@@ -35,6 +37,7 @@
     inputs@{
       self,
       nixpkgs,
+      nixos-wsl,
       sops-nix,
       home-manager,
       openziti,
@@ -52,7 +55,7 @@
         pre-commit-check = pre-commit-hooks.lib.${system}.run {
           src = ./.;
           hooks = {
-            nixfmt.enable = true;
+            nixfmt-rfc-style.enable = true;
           };
         };
       };
@@ -82,6 +85,16 @@
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
             openziti.nixosModules.ziti-edge-tunnel
+          ];
+        };
+
+        wsl = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs system; };
+          modules = [
+            ./hosts/wsl
+            home-manager.nixosModules.home-manager
+            nixos-wsl.nixosModules.default
           ];
         };
       };
