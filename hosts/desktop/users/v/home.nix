@@ -1,4 +1,9 @@
-{ config, inputs, ... }:
+{
+  pkgs,
+  config,
+  inputs,
+  ...
+}:
 {
   imports = [ inputs.plasma-manager.homeModules.plasma-manager ];
 
@@ -45,5 +50,23 @@
   };
 
   programs.home-manager.enable = true;
+  programs.direnv = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    enableNushellIntegration = true;
+    nix-direnv.enable = true;
 
+    config = {
+      global = {
+        hide_env_diff = true;
+        warn_timeout = "30s";
+        strict_env = false;
+        silent = true;
+      };
+    };
+
+    silent = true;
+  };
+  home.packages = with pkgs; [ nix-direnv ];
 }

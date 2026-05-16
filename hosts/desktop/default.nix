@@ -12,8 +12,6 @@
     ./hardware-configuration.nix
   ];
 
-  environment.systemPackages = [ (pkgs.callPackage ./packages/julie.nix { }) ];
-
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
   hardware.enableRedistributableFirmware = true;

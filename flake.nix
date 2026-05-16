@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
@@ -38,6 +39,7 @@
       self,
       nixpkgs,
       nixos-wsl,
+      nixpkgs-master,
       sops-nix,
       home-manager,
       openziti,
@@ -47,6 +49,7 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
+      master-pkgs = import nixpkgs-master { inherit system; };
     in
     {
       formatter.${system} = pkgs.nixfmt-tree;
