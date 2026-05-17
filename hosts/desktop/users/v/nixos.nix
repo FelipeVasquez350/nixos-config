@@ -98,7 +98,7 @@
     llama-cpp-vulkan
     vscode
     jujutsu
-    _7zip-zstd
+    zed-editor
 
     # Utilities
     bat
