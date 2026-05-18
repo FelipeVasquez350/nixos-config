@@ -1,4 +1,8 @@
-{ ... }:
+{
+  inputs,
+  system,
+  ...
+}:
 {
   imports = [
     ./desktop.nix
@@ -40,6 +44,26 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
+  # buf-1.69.0 and fish-4.7.1 patches are broken in current nixpkgs-unstable; use master versions
+  nixpkgs.overlays = [
+    (
+      final: prev:
+      let
+        masterPkgs = import inputs.nixpkgs-master {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      in
+      {
+        buf = masterPkgs.buf;
+        fish = masterPkgs.fish;
+      }
+    )
+  ];
+
+  # nixos-test-driver-docstrings is broken in current nixpkgs-unstable
+  documentation.nixos.enable = false;
 
   # System state version
   system.stateVersion = "25.05";

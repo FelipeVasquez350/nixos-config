@@ -58,12 +58,11 @@
     mattermost-desktop
     vorta
     protonvpn-gui
-    claude-code
-    claude-code-acp
-    copilot-language-server
+    opencode
 
     # Utilities
     bat
+    btop
     carapace
     curl
     fastfetch
@@ -115,7 +114,6 @@
     virtiofsd # for shared folders
     virt-manager
     virt-viewer
-    wireshark
 
     zed-editor
     package-version-server
