@@ -5,7 +5,6 @@
   ...
 }:
 {
-
   users.users.v = {
     isNormalUser = true;
     description = "v";
