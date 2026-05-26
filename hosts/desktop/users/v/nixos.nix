@@ -92,7 +92,7 @@
     telegram-desktop
     mattermost-desktop
     vorta
-    protonvpn-gui
+    proton-vpn
     flatpak
     kdePackages.kcalc
     llama-cpp-vulkan

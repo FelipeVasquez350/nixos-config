@@ -32,6 +32,11 @@
     openziti.url = "git+ssh://gitlab@gitlab.uranion.ai:2222/devops/nix-flakes/openziti.git?ref=main";
 
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
+
+    vm-registry = {
+      url = "git+ssh://git@github.com/FelipeVasquez350/vm-registry";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -44,6 +49,7 @@
       home-manager,
       openziti,
       pre-commit-hooks,
+      vm-registry,
       ...
     }:
     let
@@ -78,6 +84,12 @@
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
             openziti.nixosModules.ziti-edge-tunnel
+            vm-registry.nixosModules.default
+            {
+              environment.systemPackages = [ inputs.vm-registry.packages.${system}.vm-registry-cli ];
+
+              services.vm-registry-daemon.enable = true;
+            }
           ];
         };
 
@@ -88,6 +100,12 @@
             sops-nix.nixosModules.sops
             home-manager.nixosModules.home-manager
             openziti.nixosModules.ziti-edge-tunnel
+            vm-registry.nixosModules.default
+            {
+              environment.systemPackages = [ inputs.vm-registry.packages.${system}.vm-registry-cli ];
+
+              services.vm-registry-daemon.enable = true;
+            }
           ];
         };
 

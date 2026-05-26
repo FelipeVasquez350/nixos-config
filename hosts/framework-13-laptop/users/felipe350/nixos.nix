@@ -57,7 +57,7 @@
     telegram-desktop
     mattermost-desktop
     vorta
-    protonvpn-gui
+    proton-vpn
     opencode
 
     # Utilities
