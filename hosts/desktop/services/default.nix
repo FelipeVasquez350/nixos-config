@@ -2,6 +2,8 @@
 {
   imports = [ ./cloudflared.nix ];
 
+  programs.ssh.startAgent = true;
+
   services = {
     flatpak.enable = true;
 

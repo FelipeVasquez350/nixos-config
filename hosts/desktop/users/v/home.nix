@@ -15,6 +15,13 @@
         source = ./wallpapers;
         recursive = true;
       };
+      ".config/autostart/ssh-add.desktop".text = ''
+        [Entry]
+        Type=Application
+        Name=Load SSH Keys
+        Exec=sh -c 'find ~/.ssh/ -type f -name "id_*" ! -name "*.pub" -exec ssh-add {} +'
+        X-KDE-AutostartScript=true
+      '';
     };
 
     sessionVariables = {
