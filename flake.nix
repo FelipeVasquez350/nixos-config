@@ -86,7 +86,9 @@
             openziti.nixosModules.ziti-edge-tunnel
             vm-registry.nixosModules.default
             {
-              environment.systemPackages = [ inputs.vm-registry.packages.${system}.vm-registry-cli ];
+              environment.systemPackages = [
+                inputs.vm-registry.packages.${system}.vm-registry-cli
+              ];
 
               services.vm-registry-daemon.enable = true;
             }
@@ -102,7 +104,9 @@
             openziti.nixosModules.ziti-edge-tunnel
             vm-registry.nixosModules.default
             {
-              environment.systemPackages = [ inputs.vm-registry.packages.${system}.vm-registry-cli ];
+              environment.systemPackages = [
+                inputs.vm-registry.packages.${system}.vm-registry-cli
+              ];
 
               services.vm-registry-daemon.enable = true;
             }

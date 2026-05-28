@@ -744,11 +744,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1779024924,
-        "narHash": "sha256-/yFdEprN3KiKT/oXNhOrG3uGbUCw8NH/wyeHAM+wf3U=",
+        "lastModified": 1779989156,
+        "narHash": "sha256-3t+arkd7AmA44Beb5LzBW3NSuZZrDx4UcWsamRoIsiA=",
         "ref": "refs/heads/main",
-        "rev": "fcf53b394546124779a8c834b7550551143dd401",
-        "revCount": 5,
+        "rev": "f2d394b5feee96b3a8fcf0174f76354334dd1fc0",
+        "revCount": 6,
         "type": "git",
         "url": "ssh://git@github.com/FelipeVasquez350/vm-registry"
       },

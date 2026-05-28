@@ -9,6 +9,7 @@
       "networkmanager"
       "wheel"
       "docker"
+      "vm-registry"
       "libvirtd"
       "wireshark"
     ];
