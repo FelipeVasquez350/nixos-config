@@ -26,11 +26,11 @@
     },
     "crane": {
       "locked": {
-        "lastModified": 1778106249,
-        "narHash": "sha256-cM/AuKy5tMhwOOQIbha8ZRRMHVfNf7cv2aljIw+qoCg=",
+        "lastModified": 1780029330,
+        "narHash": "sha256-fWFKEKB5CP+NO8/3uOaEZIVbd03mvDJ//VsnKkXty08=",
         "owner": "ipetkov",
         "repo": "crane",
-        "rev": "6d015ea29630b7ad2402841386da2cb617a470a7",
+        "rev": "6823b493a0bc2142082075576efa6633b537197e",
         "type": "github"
       },
       "original": {
@@ -74,15 +74,15 @@
     "flake-compat_3": {
       "flake": false,
       "locked": {
-        "lastModified": 1761588595,
-        "narHash": "sha256-XKUZz9zewJNUj46b4AJdiRZJAvSZ0Dqj2BNfXvFlJC4=",
-        "owner": "edolstra",
+        "lastModified": 1767039857,
+        "narHash": "sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns=",
+        "owner": "NixOS",
         "repo": "flake-compat",
-        "rev": "f387cd2afec9419c8ee37694406ca490c3f34ee5",
+        "rev": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
         "type": "github"
       },
       "original": {
-        "owner": "edolstra",
+        "owner": "NixOS",
         "repo": "flake-compat",
         "type": "github"
       }
@@ -172,11 +172,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1765016596,
-        "narHash": "sha256-rhSqPNxDVow7OQKi4qS5H8Au0P4S3AYbawBSmJNUtBQ=",
+        "lastModified": 1778507602,
+        "narHash": "sha256-kTwur1wV+01SdqskVMSo6JMEpg71ps3HpbFY2GsflKs=",
         "owner": "cachix",
         "repo": "git-hooks.nix",
-        "rev": "548fc44fca28a5e81c5d6b846e555e6b9c2a5a3c",
+        "rev": "61ab0e80d9c7ab14c256b5b453d8b3fb0189ba0a",
         "type": "github"
       },
       "original": {
@@ -264,11 +264,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778870207,
-        "narHash": "sha256-t4bKAymRr8pNJXm5H3gAO0poCqJJ6zrv7kE9AFQwo4c=",
+        "lastModified": 1779167584,
+        "narHash": "sha256-iAMW53zbWUrGtLjtq66Sqzbz803aT+IBPg+0l6mztE8=",
         "owner": "purpleclay",
         "repo": "go-overlay",
-        "rev": "e5ff36201d4ddb929d35ec56c036ae39087980ab",
+        "rev": "1a7dd3c1e396d5d969da6f7a39bc6affd0847f1c",
         "type": "github"
       },
       "original": {
@@ -575,11 +575,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778987862,
-        "narHash": "sha256-V3qGt9P1eJP/r/1ONablphfGiH0RP4agQhrRANpDYx8=",
+        "lastModified": 1780024773,
+        "narHash": "sha256-aU9nlrS9S+IJ2EiCzsaxzOXUhggogqTrJojBicE6Oeg=",
         "owner": "oxalica",
         "repo": "rust-overlay",
-        "rev": "6f44d8874ac29806c8d5cae42bf8e19ebb5ce0d3",
+        "rev": "40b0a3a193e0840c76174b4a322874c8f6dd0a63",
         "type": "github"
       },
       "original": {
@@ -744,11 +744,11 @@
         "treefmt-nix": "treefmt-nix_2"
       },
       "locked": {
-        "lastModified": 1779989156,
-        "narHash": "sha256-3t+arkd7AmA44Beb5LzBW3NSuZZrDx4UcWsamRoIsiA=",
+        "lastModified": 1780076418,
+        "narHash": "sha256-mW1kGuOWts1RUChUOwZacOF9HLzXuh+PnxY7Ab9gc/M=",
         "ref": "refs/heads/main",
-        "rev": "f2d394b5feee96b3a8fcf0174f76354334dd1fc0",
-        "revCount": 6,
+        "rev": "10927bfc534d9ebc1cf89c851163c7d5b32f12c3",
+        "revCount": 9,
         "type": "git",
         "url": "ssh://git@github.com/FelipeVasquez350/vm-registry"
       },

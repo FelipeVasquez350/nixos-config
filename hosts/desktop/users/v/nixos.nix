@@ -99,6 +99,7 @@
     vscode
     jujutsu
     zed-editor
+    claude-code
 
     # Utilities
     bat

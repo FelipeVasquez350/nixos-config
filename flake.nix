@@ -88,6 +88,7 @@
             {
               environment.systemPackages = [
                 inputs.vm-registry.packages.${system}.vm-registry-cli
+                inputs.vm-registry.packages.${system}.vm-registry-desktop
               ];
 
               services.vm-registry-daemon.enable = true;
