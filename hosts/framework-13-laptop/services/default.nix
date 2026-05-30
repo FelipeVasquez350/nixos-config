@@ -1,7 +1,10 @@
 { ... }:
 {
 
-  imports = [ ./cloudflared.nix ];
+  imports = [
+    ./cloudflared.nix
+    ./taiscale.nix
+  ];
 
   services = {
     printing.enable = true;

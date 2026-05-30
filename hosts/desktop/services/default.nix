@@ -1,6 +1,9 @@
 { pkgs, ... }:
 {
-  imports = [ ./cloudflared.nix ];
+  imports = [
+    ./cloudflared.nix
+    ./taiscale.nix
+  ];
 
   programs.ssh.startAgent = true;
 

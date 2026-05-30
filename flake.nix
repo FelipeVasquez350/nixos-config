@@ -89,6 +89,8 @@
               environment.systemPackages = [
                 inputs.vm-registry.packages.${system}.vm-registry-cli
                 inputs.vm-registry.packages.${system}.vm-registry-desktop
+                inputs.vm-registry.packages.${system}.vm-registry-lsp
+
               ];
 
               services.vm-registry-daemon.enable = true;
@@ -107,6 +109,8 @@
             {
               environment.systemPackages = [
                 inputs.vm-registry.packages.${system}.vm-registry-cli
+                inputs.vm-registry.packages.${system}.vm-registry-desktop
+                inputs.vm-registry.packages.${system}.vm-registry-lsp
               ];
 
               services.vm-registry-daemon.enable = true;
