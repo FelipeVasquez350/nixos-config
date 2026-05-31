@@ -100,6 +100,9 @@
     jujutsu
     zed-editor
     claude-code
+    opencode
+    tmux
+    nvd
 
     # Utilities
     bat
