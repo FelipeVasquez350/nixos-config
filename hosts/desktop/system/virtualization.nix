@@ -10,7 +10,8 @@
     libvirtd = {
       enable = true;
       qemu = {
-        package = pkgs.qemu_kvm;
+        package = pkgs.qemu; # adds aarch64 support
+        # package = pkgs.qemu_kvm;
         runAsRoot = true;
         swtpm.enable = true;
       };

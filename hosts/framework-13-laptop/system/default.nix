@@ -1,6 +1,4 @@
 {
-  inputs,
-  system,
   ...
 }:
 {
@@ -36,34 +34,8 @@
     "flakes"
   ];
 
-  # Vicinae Cachix cache
-  nix.settings.extra-substituters = [ "https://vicinae.cachix.org" ];
-  nix.settings.extra-trusted-public-keys = [
-    "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
-  ];
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # buf-1.69.0 and fish-4.7.1 patches are broken in current nixpkgs-unstable; use master versions
-  nixpkgs.overlays = [
-    (
-      final: prev:
-      let
-        masterPkgs = import inputs.nixpkgs-master {
-          inherit system;
-          config.allowUnfree = true;
-        };
-      in
-      {
-        buf = masterPkgs.buf;
-        fish = masterPkgs.fish;
-      }
-    )
-  ];
-
-  # nixos-test-driver-docstrings is broken in current nixpkgs-unstable
-  documentation.nixos.enable = false;
 
   # System state version
   system.stateVersion = "25.05";

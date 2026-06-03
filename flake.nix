@@ -39,6 +39,17 @@
     };
   };
 
+  nixConfig = {
+    extra-substituters = [
+      "https://vicinae.cachix.org"
+      "https://cache.vm-registry.com/vm-registry"
+    ];
+    extra-trusted-public-keys = [
+      "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
+      "vm-registry:rMP0octji7r85KZr8G6UuiqYkMDtdnc2Cg2/S6KGBHQ="
+    ];
+  };
+
   outputs =
     inputs@{
       self,
@@ -86,11 +97,14 @@
             openziti.nixosModules.ziti-edge-tunnel
             vm-registry.nixosModules.default
             {
+              nixpkgs.config.permittedInsecurePackages = [
+                "electron-39.8.10"
+              ];
+
               environment.systemPackages = [
                 inputs.vm-registry.packages.${system}.vm-registry-cli
                 inputs.vm-registry.packages.${system}.vm-registry-desktop
                 inputs.vm-registry.packages.${system}.vm-registry-lsp
-
               ];
 
               services.vm-registry-daemon.enable = true;
