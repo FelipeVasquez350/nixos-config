@@ -20,6 +20,18 @@
   boot.initrd.luks.devices."luks-79a38375-cef1-4667-b999-789430d3f8c6".device =
     "/dev/disk/by-uuid/79a38375-cef1-4667-b999-789430d3f8c6";
 
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  nix.settings = {
+    extra-platforms = [
+      "aarch64-linux"
+      "arm-linux"
+    ];
+    extra-substituters = [ "https://nix-on-droid.cachix.org" ];
+    extra-trusted-public-keys = [
+      "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
+    ];
+  };
+
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;

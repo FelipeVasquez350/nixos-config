@@ -43,16 +43,20 @@
       url = "github:nix-community/nix-on-droid/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs-nix-on-droid";
     };
+
+    deploy-rs.url = "github:serokell/deploy-rs";
   };
 
   nixConfig = {
     extra-substituters = [
       "https://vicinae.cachix.org"
       "https://cache.vm-registry.com/vm-registry"
+      "https://nix-on-droid.cachix.org"
     ];
     extra-trusted-public-keys = [
       "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
       "vm-registry:rMP0octji7r85KZr8G6UuiqYkMDtdnc2Cg2/S6KGBHQ="
+      "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
     ];
   };
 
@@ -72,6 +76,9 @@
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
+      activateNixOnDroid =
+        configuration:
+        inputs.deploy-rs.lib.aarch64-linux.activate.custom configuration.activationPackage "${configuration.activationPackage}/activate";
     in
     {
       formatter.${system} = pkgs.nixfmt-tree;
@@ -86,7 +93,10 @@
       };
 
       devShells.${system}.default = pkgs.mkShell {
-        nativeBuildInputs = with pkgs; [ nh ];
+        nativeBuildInputs = with pkgs; [
+          nh
+          deploy-rs
+        ];
         shellHook = ''
           ${self.checks.${system}.pre-commit-check.shellHook}
         '';
@@ -155,6 +165,20 @@
       nixOnDroidConfigurations.default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
         pkgs = import nixpkgs-nix-on-droid { system = "aarch64-linux"; };
         modules = [ ./hosts/nix-on-droid ];
+      };
+
+      deploy.nodes."android" = {
+        hostname = "nothingphone1";
+        profiles.system = {
+          sshUser = "nix-on-droid";
+          user = "nix-on-droid";
+          magicRollback = true;
+          sshOpts = [
+            "-p"
+            "8022"
+          ];
+          path = activateNixOnDroid self.nixOnDroidConfigurations.default;
+        };
       };
     };
 }
