@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-master.url = "github:nixos/nixpkgs/master";
 
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
@@ -37,6 +36,13 @@
       url = "git+ssh://git@github.com/FelipeVasquez350/vm-registry";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixpkgs-nix-on-droid.url = "github:NixOS/nixpkgs/nixos-24.05";
+
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs-nix-on-droid";
+    };
   };
 
   nixConfig = {
@@ -55,18 +61,17 @@
       self,
       nixpkgs,
       nixos-wsl,
-      nixpkgs-master,
       sops-nix,
       home-manager,
       openziti,
       pre-commit-hooks,
       vm-registry,
+      nixpkgs-nix-on-droid,
       ...
     }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
-      master-pkgs = import nixpkgs-master { inherit system; };
     in
     {
       formatter.${system} = pkgs.nixfmt-tree;
@@ -121,6 +126,10 @@
             openziti.nixosModules.ziti-edge-tunnel
             vm-registry.nixosModules.default
             {
+              nixpkgs.config.permittedInsecurePackages = [
+                "electron-39.8.10"
+              ];
+
               environment.systemPackages = [
                 inputs.vm-registry.packages.${system}.vm-registry-cli
                 inputs.vm-registry.packages.${system}.vm-registry-desktop
@@ -141,6 +150,11 @@
             nixos-wsl.nixosModules.default
           ];
         };
+      };
+
+      nixOnDroidConfigurations.default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+        pkgs = import nixpkgs-nix-on-droid { system = "aarch64-linux"; };
+        modules = [ ./hosts/nix-on-droid ];
       };
     };
 }
