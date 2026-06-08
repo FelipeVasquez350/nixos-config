@@ -98,6 +98,7 @@
     llama-cpp-vulkan
     vscode
     jujutsu
+    jj-starship
     zed-editor
     claude-code
     opencode

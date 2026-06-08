@@ -61,6 +61,7 @@
     proton-vpn
     opencode
     jujutsu
+    jj-starship
     zed-editor
     claude-code
     opencode
