@@ -55,7 +55,7 @@
     ];
     extra-trusted-public-keys = [
       "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
-      "vm-registry:rMP0octji7r85KZr8G6UuiqYkMDtdnc2Cg2/S6KGBHQ="
+      "vm-registry:+3DJDFw+Bn19FVM920/fB4bNXkwt8L7tkTYG2m7ntAY="
       "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
     ];
   };
@@ -144,9 +144,15 @@
                 inputs.vm-registry.packages.${system}.vm-registry-cli
                 inputs.vm-registry.packages.${system}.vm-registry-desktop
                 inputs.vm-registry.packages.${system}.vm-registry-lsp
+                pkgs.cdrkit
+                pkgs.qemu_kvm
               ];
 
               services.vm-registry-daemon.enable = true;
+              systemd.services.vm-registry-daemon.path = [
+                pkgs.cdrkit
+                pkgs.qemu_kvm
+              ];
             }
           ];
         };
