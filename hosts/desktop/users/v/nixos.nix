@@ -88,6 +88,7 @@
     bitwarden-desktop
     discord
     discord-canary
+    easyeffects
     obsidian
     telegram-desktop
     mattermost-desktop
@@ -96,6 +97,7 @@
     flatpak
     kdePackages.kcalc
     llama-cpp-vulkan
+    lmstudio
     vscode
     jujutsu
     jj-starship
@@ -174,8 +176,5 @@
     spotify
     vlc
     obs-studio
-
-    # Flakes
-    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }

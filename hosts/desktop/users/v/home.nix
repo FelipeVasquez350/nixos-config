@@ -5,7 +5,10 @@
   ...
 }:
 {
-  imports = [ inputs.plasma-manager.homeModules.plasma-manager ];
+  imports = [
+    inputs.plasma-manager.homeModules.plasma-manager
+    inputs.zen-browser.homeModules.beta
+  ];
 
   home = {
     username = "v";
@@ -54,6 +57,15 @@
     #     };
     #   }];
     # }];
+  };
+
+  programs.zen-browser = {
+    enable = true;
+    profiles.default.settings = {
+      # Fix intermittent copy failures under KDE Plasma Wayland.
+      # https://bugzilla.mozilla.org/show_bug.cgi?id=1791417
+      "widget.wayland.async-clipboard.enabled" = true;
+    };
   };
 
   programs.home-manager.enable = true;
