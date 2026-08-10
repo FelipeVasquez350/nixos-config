@@ -46,7 +46,7 @@
 
     silent = true;
   };
-  services.vicinae = {
+  programs.vicinae = {
     enable = true;
     settings = {
       faviconService = "twenty"; # twenty | google | none

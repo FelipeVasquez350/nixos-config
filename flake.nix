@@ -33,7 +33,7 @@
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
 
     vm-registry = {
-      url = "git+ssh://git@github.com/FelipeVasquez350/vm-registry";
+      url = "git+ssh://git@github.com/vm-registry/vm-registry";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -55,7 +55,7 @@
     ];
     extra-trusted-public-keys = [
       "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
-      "vm-registry:+3DJDFw+Bn19FVM920/fB4bNXkwt8L7tkTYG2m7ntAY="
+      "cache.vm-registry.com-1:tSrq9hr+OuXyBEO0V0FHzgMhfaMPVpcSR4CN4177Zis="
       "nix-on-droid.cachix.org-1:56snoMJTXmDRC1Ei24CmKoUqvHJ9XCp+nidK7qkMQrU="
     ];
   };
@@ -87,7 +87,7 @@
         pre-commit-check = pre-commit-hooks.lib.${system}.run {
           src = ./.;
           hooks = {
-            nixfmt-rfc-style.enable = true;
+            nixfmt.enable = true;
           };
         };
       };

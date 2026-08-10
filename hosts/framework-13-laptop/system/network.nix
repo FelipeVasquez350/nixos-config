@@ -4,7 +4,7 @@
   boot.kernelModules = [ "br_netfilter" ];
 
   networking.bridges."br0".interfaces = [ "enp195s0f4u1" ];
-
+  networking.firewall.checkReversePath = false;
   boot.kernel.sysctl = {
     "net.ipv4.ip_forward" = 1;
     "net.ipv4.conf.all.rp_filter" = 0;
