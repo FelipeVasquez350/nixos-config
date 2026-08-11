@@ -753,11 +753,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1785588276,
-        "narHash": "sha256-31LwNeSYuqi44pG8CCTID7TVEdk+2x61S3Yx+025Y+A=",
+        "lastModified": 1786487683,
+        "narHash": "sha256-iqXYHOU1p4kBbONL7NmqAY6i6Q13loyUfRE+y29uxC4=",
         "ref": "refs/heads/main",
-        "rev": "f621815bbd811ea1beafb7fe98ac3bcaa8b3d163",
-        "revCount": 47,
+        "rev": "fa48c70b6789a5d25aeb314bde3779c555fd9623",
+        "revCount": 49,
         "type": "git",
         "url": "ssh://git@github.com/vm-registry/vm-registry"
       },
