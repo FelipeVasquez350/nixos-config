@@ -64,7 +64,25 @@
   };
   programs.extra-container.enable = true;
 
-  programs.nix-ld.libraries = with pkgs; [ icu ];
+  # The Delta bundle ships its own libxkbcommon built for FHS, so it looks for
+  # keymaps in /usr/share/X11 and segfaults when xkb_context_new returns NULL.
+  # Point it at nixpkgs' data instead. Remove along with the nix-ld libs below.
+  environment.sessionVariables = {
+    XKB_CONFIG_ROOT = "${pkgs.xkeyboard_config}/share/X11/xkb";
+    XLOCALEDIR = "${pkgs.libx11}/share/X11/locale";
+  };
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    # Zed "Delta" beta: self-updating bundle in ~/.local/delta.app, so it runs
+    # via nix-ld instead of being packaged. Remove once it ships a real flake.
+    libglvnd
+    libx11
+    libxcb
+    libxkbcommon
+    vulkan-loader
+    wayland
+  ];
 
   fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
 
