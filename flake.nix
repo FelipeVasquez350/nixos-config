@@ -50,7 +50,7 @@
   nixConfig = {
     extra-substituters = [
       "https://vicinae.cachix.org"
-      "https://cache.vm-registry.com/vm-registry"
+      "https://cache.vm-registry.com"
       "https://nix-on-droid.cachix.org"
     ];
     extra-trusted-public-keys = [

@@ -7,6 +7,7 @@
     docker = {
       enable = true;
     };
+
     libvirtd = {
       enable = true;
       qemu = {
@@ -24,6 +25,8 @@
       onBoot = "ignore";
       onShutdown = "shutdown";
     };
+
+    vmware.host.enable = true;
   };
 
   # Enable NSS for libvirt hostname resolution

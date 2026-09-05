@@ -24,6 +24,8 @@
     ];
   };
 
+  environment.shells = [ pkgs.nushell ];
+
   sops = {
     defaultSopsFile = ./secrets.yaml;
     age.keyFile = "/var/lib/sops-nix/keys.txt";
@@ -60,6 +62,7 @@
       obs-pipewire-audio-capture
     ];
   };
+  programs.extra-container.enable = true;
 
   programs.nix-ld.libraries = with pkgs; [ icu ];
 
@@ -67,9 +70,11 @@
 
   programs.gamemode.enable = true;
   hardware.steam-hardware.enable = true;
+
   programs.kdeconnect.enable = true;
   programs.kdeconnect.package = lib.mkForce pkgs.kdePackages.kdeconnect-kde;
 
+  # Firewall ports for KDE Connect
   networking.firewall.allowedTCPPortRanges = [
     {
       from = 1714;
@@ -86,8 +91,7 @@
   environment.systemPackages = with pkgs; [
     # Programs
     bitwarden-desktop
-    discord
-    discord-canary
+    vesktop
     easyeffects
     obsidian
     telegram-desktop
@@ -106,6 +110,7 @@
     opencode
     tmux
     nvd
+    kdePackages.filelight
 
     # Utilities
     bat
@@ -166,10 +171,12 @@
     heroic
     gamescope
     mangohud
+    prismlauncher
+    gpu-screen-recorder-gtk
 
     # Media
     # aseprite
-    # blender
+    blender
     feishin
     # kid3
     # reco
