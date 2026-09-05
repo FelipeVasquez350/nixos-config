@@ -86,6 +86,7 @@
 
   fonts.packages = [ pkgs.nerd-fonts.jetbrains-mono ];
 
+  programs.gpu-screen-recorder.enable = true;
   programs.gamemode.enable = true;
   hardware.steam-hardware.enable = true;
 
