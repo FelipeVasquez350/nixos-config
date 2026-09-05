@@ -269,6 +269,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-datagrip": {
+      "locked": {
+        "lastModified": 1754393734,
+        "narHash": "sha256-fbnmAwTQkuXHKBlcL5Nq1sMAzd3GFqCOQgEQw6Hy0Ak=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "a683adc19ff5228af548c6539dbc3440509bfed3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "a683adc19ff5228af548c6539dbc3440509bfed3",
+        "type": "github"
+      }
+    },
     "nixpkgs-docs": {
       "locked": {
         "lastModified": 1705957679,
@@ -330,6 +346,22 @@
         "owner": "NixOS",
         "ref": "nixos-24.05",
         "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-rider": {
+      "locked": {
+        "lastModified": 1761679338,
+        "narHash": "sha256-W3QJwMul/ksoiT/kRJyNqdOBlE3F5y7I+uTqNuB+CnQ=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "27b24b710cef878aec776e355aee5f359ed274d6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "27b24b710cef878aec776e355aee5f359ed274d6",
         "type": "github"
       }
     },
@@ -582,7 +614,9 @@
         "nixos-hardware": "nixos-hardware",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_4",
+        "nixpkgs-datagrip": "nixpkgs-datagrip",
         "nixpkgs-nix-on-droid": "nixpkgs-nix-on-droid",
+        "nixpkgs-rider": "nixpkgs-rider",
         "openziti": "openziti",
         "plasma-manager": "plasma-manager",
         "pre-commit-hooks": "pre-commit-hooks",

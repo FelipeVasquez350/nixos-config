@@ -4,11 +4,23 @@
 
 { inputs, pkgs, ... }:
 
+let
+  pinnedPkgs = import inputs.nixpkgs-rider {
+    system = pkgs.stdenv.hostPlatform.system;
+    config.allowUnfree = true;
+  };
+  datagripPkgs = import inputs.nixpkgs-datagrip {
+    system = pkgs.stdenv.hostPlatform.system;
+    config.allowUnfree = true;
+  };
+in
 {
+
   imports = [
     ./services
     ./system
     ./users/v/nixos.nix
+    ./users/v/tMod.nix
     ./hardware-configuration.nix
   ];
 

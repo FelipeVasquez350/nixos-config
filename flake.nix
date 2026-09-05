@@ -45,6 +45,11 @@
     };
 
     deploy-rs.url = "github:serokell/deploy-rs";
+
+    # jetbrains.rider pinned to 2025.2.4 — last release covered by the perpetual
+    # fallback licence (All Products Pack fallback ver. 2025.2)
+    nixpkgs-rider.url = "github:nixos/nixpkgs/27b24b710cef878aec776e355aee5f359ed274d6";
+    nixpkgs-datagrip.url = "github:nixos/nixpkgs/a683adc19ff5228af548c6539dbc3440509bfed3";
   };
 
   nixConfig = {

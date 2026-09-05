@@ -4,6 +4,13 @@
   lib,
   ...
 }:
+
+let
+  datagripPkgs = import inputs.nixpkgs-datagrip {
+    system = pkgs.stdenv.hostPlatform.system;
+    config.allowUnfree = true;
+  };
+in
 {
   users.users.v = {
     isNormalUser = true;
@@ -48,7 +55,6 @@
     };
   };
 
-  programs.nix-ld.enable = true;
   programs.appimage = {
     enable = true;
     binfmt = true;
@@ -105,6 +111,14 @@
       from = 1714;
       to = 1764;
     }
+  ];
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      jetbrains = prev.jetbrains // {
+        datagrip = datagripPkgs.jetbrains.datagrip;
+      };
+    })
   ];
 
   environment.systemPackages = with pkgs; [
