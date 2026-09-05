@@ -50,6 +50,12 @@
     # fallback licence (All Products Pack fallback ver. 2025.2)
     nixpkgs-rider.url = "github:nixos/nixpkgs/27b24b710cef878aec776e355aee5f359ed274d6";
     nixpkgs-datagrip.url = "github:nixos/nixpkgs/a683adc19ff5228af548c6539dbc3440509bfed3";
+    # Packages the private Delta Linux release tarballs. Fetching them needs a
+    # GitHub token (see the flake's README) or a pre-seeded store path.
+    delta-nix = {
+      url = "git+ssh://git@github.com/zed-industries/delta-nix-linux";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
@@ -98,9 +104,9 @@
       };
 
       devShells.${system}.default = pkgs.mkShell {
-        nativeBuildInputs = with pkgs; [
-          nh
-          deploy-rs
+        nativeBuildInputs = [
+          pkgs.nh
+          pkgs.deploy-rs
         ];
         shellHook = ''
           ${self.checks.${system}.pre-commit-check.shellHook}

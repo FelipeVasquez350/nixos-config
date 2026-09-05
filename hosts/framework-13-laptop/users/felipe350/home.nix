@@ -63,7 +63,12 @@
   };
 
   # Ensure nix-direnv is available
-  home.packages = with pkgs; [ nix-direnv ];
+  home.packages = [
+    pkgs.nix-direnv
+
+    # Delta, packaged from the mirrored Linux release tarball (nightly channel).
+    inputs.delta-nix.packages.${pkgs.stdenv.hostPlatform.system}.delta-nightly
+  ];
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
