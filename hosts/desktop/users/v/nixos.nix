@@ -116,7 +116,9 @@ in
   nixpkgs.overlays = [
     (final: prev: {
       jetbrains = prev.jetbrains // {
-        datagrip = datagripPkgs.jetbrains.datagrip;
+        datagrip = prev.jetbrains.datagrip.overrideAttrs (_: {
+          inherit (datagripPkgs.jetbrains.datagrip) version src;
+        });
       };
     })
   ];

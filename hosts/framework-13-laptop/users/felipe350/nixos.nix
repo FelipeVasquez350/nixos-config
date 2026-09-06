@@ -1,4 +1,15 @@
-{ inputs, pkgs, ... }:
+{
+  inputs,
+  pkgs,
+  ...
+}:
+
+let
+  datagripPkgs = import inputs.nixpkgs-datagrip {
+    system = pkgs.stdenv.hostPlatform.system;
+    config.allowUnfree = true;
+  };
+in
 {
   programs.zsh.enable = true;
 
@@ -67,6 +78,16 @@
     libxkbcommon
     vulkan-loader
     wayland
+  ];
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      jetbrains = prev.jetbrains // {
+        datagrip = prev.jetbrains.datagrip.overrideAttrs (_: {
+          inherit (datagripPkgs.jetbrains.datagrip) version src;
+        });
+      };
+    })
   ];
 
   environment.systemPackages = with pkgs; [
