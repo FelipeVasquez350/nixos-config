@@ -65,9 +65,6 @@
   # Ensure nix-direnv is available
   home.packages = [
     pkgs.nix-direnv
-
-    # Delta, packaged from the mirrored Linux release tarball (nightly channel).
-    inputs.delta-nix.packages.${pkgs.stdenv.hostPlatform.system}.delta-nightly
   ];
 
   dconf.settings = {

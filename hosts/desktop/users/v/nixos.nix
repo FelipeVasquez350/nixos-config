@@ -142,10 +142,10 @@ in
     jj-starship
     zed-editor
     claude-code
-    opencode
     tmux
     nvd
     kdePackages.filelight
+    libreoffice
 
     # Utilities
     bat
@@ -208,11 +208,18 @@ in
     mangohud
     prismlauncher
     gpu-screen-recorder-gtk
+    deadlock-mod-manager
 
     # Media
     # aseprite
     blender
     feishin
+    lmms
+
+    # Soundfonts for LMMS Sf2 Player (/run/current-system/sw/share/soundfonts)
+    soundfont-fluid
+    soundfont-generaluser-gs
+
     # kid3
     # reco
     spotify

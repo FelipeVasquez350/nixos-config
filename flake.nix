@@ -24,7 +24,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
 
     vicinae.url = "github:vicinaehq/vicinae";
 
@@ -50,12 +54,6 @@
     # fallback licence (All Products Pack fallback ver. 2025.2)
     nixpkgs-rider.url = "github:nixos/nixpkgs/27b24b710cef878aec776e355aee5f359ed274d6";
     nixpkgs-datagrip.url = "github:nixos/nixpkgs/a683adc19ff5228af548c6539dbc3440509bfed3";
-    # Packages the private Delta Linux release tarballs. Fetching them needs a
-    # GitHub token (see the flake's README) or a pre-seeded store path.
-    delta-nix = {
-      url = "git+ssh://git@github.com/zed-industries/delta-nix-linux";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   nixConfig = {
@@ -93,6 +91,18 @@
     in
     {
       formatter.${system} = pkgs.nixfmt-tree;
+
+      packages.${system} = {
+        kytyps5 = pkgs.callPackage ./pkgs/kytyps5.nix { };
+        # A/B harness for KytyPS5 PR #500 (Demon's Souls shader work): the
+        # seemingly-working fork build vs the PR-head source build. Both wrap
+        # absolute host paths, so they evaluate impurely:
+        #   nix build --impure .#kytyps5-pr500-working .#kytyps5-pr500-head
+        kytyps5-pr500-working = pkgs.callPackage ./pkgs/kytyps5-pr500-working.nix { };
+        kytyps5-pr500-head = pkgs.callPackage ./pkgs/kytyps5-pr500-head.nix { };
+        terminal-browser = pkgs.callPackage ./pkgs/terminal-browser.nix { };
+        openwhispr = pkgs.callPackage ./pkgs/openwhispr.nix { };
+      };
 
       checks.${system} = {
         pre-commit-check = pre-commit-hooks.lib.${system}.run {

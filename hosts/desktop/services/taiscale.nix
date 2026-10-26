@@ -4,8 +4,11 @@
   # Enable the Tailscale service daemon
   services.tailscale = {
     enable = true;
-    extraUpFlags = [ "--ssh" ];
-
+    extraUpFlags = [
+      "--ssh"
+      "--accept-dns=true"
+    ];
+    extraSetFlags = [ "--netfilter-mode=nodivert" ];
   };
 
   # Make the CLI tool available to your user environment

@@ -99,12 +99,10 @@ in
     mattermost-desktop
     vorta
     proton-vpn
-    opencode
     jujutsu
     jj-starship
     zed-editor
     claude-code
-    opencode
     tmux
     nvd
 

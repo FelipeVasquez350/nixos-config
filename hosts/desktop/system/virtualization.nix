@@ -26,7 +26,7 @@
       onShutdown = "shutdown";
     };
 
-    vmware.host.enable = true;
+    vmware.host.enable = false;
   };
 
   # Enable NSS for libvirt hostname resolution

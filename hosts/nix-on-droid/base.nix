@@ -6,14 +6,6 @@
   ...
 }:
 {
-  # Android/Termux specific configuration
-  android-integration = {
-    termux-open.enable = true; # open...file??
-    termux-open-url.enable = true; # open url
-    termux-reload-settings.enable = true; # reload settings without kill session
-    termux-setup-storage.enable = true; # access to phone storage
-  };
-
   environment.packages = with pkgs; [
     # User-facing stuff that you really really want to have
     vim # or some other editor, e.g. nano or neovim
@@ -34,7 +26,7 @@
     nix-output-monitor
     nvd
     # Some common stuff that people expect to have
-    #procps
+    procps
     #killall
     #diffutils
     which
@@ -45,9 +37,9 @@
     hostname
     ncurses
     #man
-    #gnugrep
+    gnugrep
     #gnupg
-    #gnused
+    gnused
     #gnutar
     #bzip2
     gzip
@@ -62,7 +54,7 @@
       PROFILE=/nix/var/nix/profiles/nix-on-droid
       OLD=$(readlink -f "$PROFILE" 2>/dev/null || true)
 
-      nix-on-droid switch "$@" 2>&1 | ${nix-output-monitor}/bin/nom
+      nix-on-droid switch --flake "$@" 2>&1 | ${nix-output-monitor}/bin/nom
 
       NEW=$(readlink -f "$PROFILE" 2>/dev/null || true)
 

@@ -45,6 +45,7 @@
 
     ziti-edge-tunnel = {
       enable = true;
+      dnsIpRange = "10.199.0.0/16";
     };
   };
 }
